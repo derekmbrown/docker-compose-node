@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  node_service:
+    container_name: testnode
+    image: node:alpine
+    environment:
+      - CONTAINER_NAME=testnode
+    working_dir: /root
+    volumes:
+      - ./app.js:/root/app.js
+    entrypoint: [ "/bin/sh", "-c" ]
+    command:
+      - |
+        node -v
+        npm init -y
+        npm i node-emoji
+        tail -f /dev/null
